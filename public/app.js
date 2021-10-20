@@ -1,11 +1,14 @@
 
-const host = "http://localhost:5000/";
+const host = "http://"+window.location.host+"/";
+
 		document.querySelector("#get-video-info-btn").addEventListener("click",function(){
 			let videoURL = document.querySelector("#videoURL").value.trim();
 			if(videoURL.length == 0){
 				alert("Please enter youtube video link");
 				return;
 			}
+
+
 			fetch(host+"videoInfo?videoURL="+videoURL).then(function(response){
 				return response.json();
 			}).then(function(data){
@@ -46,6 +49,7 @@ const host = "http://localhost:5000/";
 				}
 			}).catch(function(error){
 				alert("Something went wrong");
+				console.log(error);
 			})
 		});
 
